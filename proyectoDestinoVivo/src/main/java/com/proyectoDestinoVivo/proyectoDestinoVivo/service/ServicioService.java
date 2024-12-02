@@ -39,6 +39,5 @@ public Servicio consultarServicioXid(Integer id) {
 
     public void eliminarServicio(Integer id_servicio) {
         servicioRepository.deleteById(id_servicio);
-
     }
 }
