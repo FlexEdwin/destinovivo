@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173") // permite las solicitudes a Vue
 public class UsuarioController {
     @Autowired
     private final UsuarioService usuarioService;

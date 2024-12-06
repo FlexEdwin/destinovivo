@@ -2,14 +2,12 @@ package com.proyectoDestinoVivo.proyectoDestinoVivo.controller;
 
 import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Resena;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.service.ResenaService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173") // permite las solicitudes a Vue
 public class ResenaController {
 
     private final ResenaService resenaService;
