@@ -1,14 +1,9 @@
 package com.proyectoDestinoVivo.proyectoDestinoVivo.controller;
 
 import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Servicio;
-import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Usuario;
-import com.proyectoDestinoVivo.proyectoDestinoVivo.repository.ServicioRepository;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.service.ServicioService;
-import com.proyectoDestinoVivo.proyectoDestinoVivo.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class ServicioController {
