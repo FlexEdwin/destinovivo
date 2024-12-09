@@ -1,7 +1,6 @@
 package com.proyectoDestinoVivo.proyectoDestinoVivo.controller;
 
 import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Resena;
-import com.proyectoDestinoVivo.proyectoDestinoVivo.service.ResenaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
