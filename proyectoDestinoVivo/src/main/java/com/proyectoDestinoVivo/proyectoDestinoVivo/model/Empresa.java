@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "empresa")
 public class Empresa {
@@ -41,7 +42,6 @@ public class Empresa {
 
     public Empresa() {
     }
-
     public int getId_empresa() {
         return id_empresa;
     }
@@ -113,4 +113,5 @@ public class Empresa {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
 }
