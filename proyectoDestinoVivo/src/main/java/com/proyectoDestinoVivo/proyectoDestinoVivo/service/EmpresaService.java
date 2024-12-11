@@ -46,4 +46,9 @@ public class EmpresaService {
     public List<Empresa> consultarEmpresas(){
         return empresaRepository.findAll();
     }
+
+    public Empresa consultarEmpresaPorId(int id_empresa) {
+        return empresaRepository.findById(id_empresa)
+                .orElseThrow(() -> new RuntimeException("Empresa no encontrada"));
+    }
 }
