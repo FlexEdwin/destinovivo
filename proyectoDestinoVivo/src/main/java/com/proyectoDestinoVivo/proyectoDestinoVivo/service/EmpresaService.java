@@ -49,6 +49,6 @@ public class EmpresaService {
 
     public Empresa consultarEmpresaPorId(int id_empresa) {
         return empresaRepository.findById(id_empresa)
-                .orElseThrow(() -> new RuntimeException("Empresa no encontrada"));
+                .orElseThrow(() -> new RuntimeException("Empresa no existente"));
     }
 }
