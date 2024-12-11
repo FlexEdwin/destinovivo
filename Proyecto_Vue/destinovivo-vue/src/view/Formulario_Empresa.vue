@@ -1,19 +1,17 @@
 <template>
 
-    <Mheader></Mheader>
+     <Mheader></Mheader>
 
 
     <div class="formulario-view">
-        <Insertar_Usuario></Insertar_Usuario>
-    
+    <Insertar_Empresa></Insertar_Empresa>
   </div>
 </template>
 
 <script setup>
-import Insertar_Usuario from '@/components/Insertar_Usuario.vue';
+import Insertar_Empresa from '@/components/Insertar_Empresa.vue';
 import Mheader from '@/components/Mheader.vue';
 </script>
-
 
 <style scoped>
     .formulario-view {

@@ -8,7 +8,7 @@
             <router-link to ="/Insertar_Empresa">Empresa</router-link>
         </li>
         <li>
-            <router-link to ="/Insertar_Usuario">Usuario</router-link>
+            <router-link to ="/Listar_Usuarios">Usuarios</router-link>
         </li>
         <li>
             <router-link to ="/Insertar_Resena">Reseña</router-link>
