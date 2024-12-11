@@ -1,6 +1,5 @@
 package com.proyectoDestinoVivo.proyectoDestinoVivo.service;
 
-import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Empresa;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Usuario;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.repository.UsuarioRepository;
 import org.springframework.dao.DataAccessException;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -31,6 +31,15 @@ public class UsuarioService {
     public List<Usuario> consultarUsuario(){
 
         return usuarioRepository.findAll();
+    }
+
+    public Usuario consultarUsuarioById(String documento){
+        Optional<Usuario> usuario = usuarioRepository.findById(documento);
+        if (usuario.isPresent()) {
+            return usuario.get();
+        } else {
+            throw new RuntimeException("Usuario no encontrado con ID: " + documento);
+        }
     }
 
     public Usuario editarUsuario(String documento, Usuario usuario){

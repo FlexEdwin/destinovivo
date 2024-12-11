@@ -3,6 +3,7 @@ package com.proyectoDestinoVivo.proyectoDestinoVivo.controller;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Usuario;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.service.UsuarioService;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
@@ -33,6 +34,17 @@ public class UsuarioController {
         }catch (RuntimeException e){
             throw new RuntimeException("Error al consultar los usuarios" +e);
         }
+    }
+
+    @GetMapping("/usuarios/consultar/{documento}")
+    public ResponseEntity<Usuario> consultarUsuarioById(@PathVariable("documento") String documento){
+        try{
+            Usuario usuario = usuarioService.consultarUsuarioById(documento);
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
+        }catch (RuntimeException e){
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+
     }
 
     @PutMapping("/usuarios/editar/{documento}")
