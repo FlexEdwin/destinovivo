@@ -55,7 +55,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/usuarios/eliminar/{documento}")
-    public String eliminarUsuario(@PathVariable String documento, @RequestBody Usuario usuario){
+    public String eliminarUsuario(@PathVariable String documento){
         return usuarioService.eliminarUsuario(documento);
     }
 
