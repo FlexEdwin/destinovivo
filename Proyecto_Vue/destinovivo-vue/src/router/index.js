@@ -7,6 +7,9 @@ import Insertar_Usuario from "@/components/Insertar_Usuario.vue";
 import Editar_Usuario from "@/components/Editar_Usuario.vue";
 
 import Formulario_Usuario from "@/view/Formulario_Usuario.vue";
+import Insertar_Resena from "@/components/Insertar_Resena.vue";
+import Vista_Empresa from "@/view/Vista_Empresa.vue";
+import Detalle_Empresa from "@/components/Detalle_Empresa.vue";
 
 const routes=[
 
@@ -41,6 +44,22 @@ const routes=[
         props: true,
 
     },
+    {
+        path: '/Insertar_Resena',
+        name :'Insetar_Resena',
+        component : Insertar_Resena,
+    },
+    {
+        path: '/Vista_Empresa',
+        name :'Vista_Empresa',
+        component : Vista_Empresa,
+    },
+    {
+        path: '/Detalle_Empresa/:id_empresa',
+        name :'Detalle_Empresa/:id_empresa',
+        component : Detalle_Empresa,
+        props: true,
+    }
 
 ]
 

@@ -10,6 +10,9 @@
             <li>
                 <router-link to ="/Listar_Usuarios">Usuarios</router-link>
             </li>
+            <li>
+                <router-link to ="/Insertar_Resena">Reseñas</router-link>
+            </li>
         </ul>
     </nav>
 </template>

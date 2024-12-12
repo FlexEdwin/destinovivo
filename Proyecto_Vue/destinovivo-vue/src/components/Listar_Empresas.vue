@@ -6,10 +6,11 @@
                 <div class="card mb-3" style="width: 18rem;">
                     <img :src="item.imagen" class="card-img-top" alt="Imagen de la empresa">
                     <div class="card-body">
+                        <h5>{{item.id_empresa}}</h5>
                         <h5 class="card-title">{{item.nombre}}</h5>
                         <p class="card-text">{{item.descripcion}}</p>
                         <p class="card-text"><strong>Teléfono: </strong>{{item.telefono}}</p>
-                        <router-link to ="/ACA RUTA AL DETALLE DE LA EMPRESA" class="btn">Ver más</router-link>
+                        <button @click="Detalle_Empresa(item.id_empresa)">Ver mas</button>
                     </div>
                 </div>
             </div>
@@ -19,6 +20,10 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+// Inicializar el router
+const router = useRouter();
 const data = ref([]);
 const mensaje = ref("null");
 
@@ -34,6 +39,11 @@ const Listar_Empresas = async () => {
     } catch (error) {
         mensaje.value = error.message;
     }
+};
+
+// Función para el detalle de la empresa
+const Detalle_Empresa = async (id_empresa) => {
+  router.push({ name: 'Detalle_Empresa/:id_empresa', params: { id_empresa } });
 };
 
 onMounted(() => {
