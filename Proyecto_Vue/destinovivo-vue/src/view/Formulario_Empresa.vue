@@ -16,13 +16,11 @@ import Mheader from '@/components/Mheader.vue';
 <style scoped>
     .formulario-view {
     text-align: center;
-    font-style: normal;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 20px;
     }
+    
     .formulario-title {
-    text-align: left;
-    font-size: large;
-    font-style: normal;
     padding: 20px;
     }
 </style>

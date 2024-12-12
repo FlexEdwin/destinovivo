@@ -33,6 +33,8 @@ public class EmpresaController {
         }
     }
 
+    
+
     @PutMapping("/empresas/editar/{id_empresa}")
     public ResponseEntity<Empresa> editarEmpresa(@PathVariable int id_empresa, @RequestBody Empresa empresa){
         Empresa actualizada = empresaService.editarEmpresa(id_empresa, empresa);

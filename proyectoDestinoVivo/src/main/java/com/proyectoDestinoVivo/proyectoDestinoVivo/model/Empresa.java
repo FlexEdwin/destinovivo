@@ -25,7 +25,7 @@ public class Empresa {
     private String correo;
     @Column(nullable = false, length = 20)
     private String contrasena;
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false)
     private String imagen;
 
     public Empresa(int id_empresa, String nombre, String direccion, String descripcion, String horario, String telefono, String correo, String contrasena, String imagen) {
