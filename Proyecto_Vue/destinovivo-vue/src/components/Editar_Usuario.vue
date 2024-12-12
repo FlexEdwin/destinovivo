@@ -1,4 +1,5 @@
 <template>
+    <Mheader></Mheader>
     <div class="formulario-usuario">
 
         <!-- Formulario de empresa -->
@@ -9,29 +10,28 @@
             </div>
 
             <div class="form-group-Usuario">
-                <label for="nombre">nombre:</label>
-                <input type="text" id="nombre" value="nombre" v-model="frm.nombre" required />
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" v-model="frm.nombre" required />
             </div>
 
             <div class="form-group-Usuario">
                 <label for="correo">Correo Electrónico:</label>
-                <input type="text" id="correo" value="correo" v-model="frm.correo" required />
+                <input type="text" id="correo" v-model="frm.correo" required />
             </div>
 
             <div class="form-group-Usuario">
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" value="telefono" v-model="frm.telefono" required />
+                <input type="tel" id="telefono" v-model="frm.telefono" required />
             </div>
 
             <div class="form-group-Usuario">
                 <label for="nacionalidad">Nacionalidad:</label>
-                <input type="nacional" id="nacionalidad" value="nacionalidad" v-model="frm.nacionalidad" required />
+                <input type="nacional" id="nacionalidad" v-model="frm.nacionalidad" required />
             </div>
 
             <div class="form-group-Usuario">
                 <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-                <input type="fechanaci" id="fechanaci" v-model="frm.fecha_nacimiento"
-                    value="Ingresa la Fecha de Nacimiento" required />
+                <input type="fechanaci" id="fechanaci" v-model="frm.fecha_nacimiento" required />
             </div>
 
             <button type="submit" class="btn-submit">Enviar</button>
@@ -43,10 +43,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import Mheader from './Mheader.vue';
 
 const data = ref([])
 const mensaje = ref("null")
-
 // Inicializar el router
 const router = useRouter();
 
@@ -59,28 +59,51 @@ const frm = ref(({
     fecha_nacimiento: ""
 }))
 
+const Consultar_Usuario = async () => {
+    try {
+        const documento = router.currentRoute.value.params.documento;
+        const usuario = await fetch(`http://localhost:8080/usuarios/consultar/${documento}`,
+            {
+                method: "GET"
+
+            })
+        if (!usuario.ok) {
+            throw new Error("Error al consultar los datos");
+        }
+        const usuarioData = await usuario.json();
+
+        frm.value = {
+            documento: usuarioData.documento,
+            nombre: usuarioData.nombre,
+            correo: usuarioData.correo,
+            telefono: usuarioData.telefono,
+            nacionalidad: usuarioData.nacionalidad,
+            fecha_nacimiento: usuarioData.fecha_nacimiento
+        };
+
+    } catch (error) {
+        mensaje.value = error.mensaje;
+    }
+}
+
 const Editar_Usuario = async () => {
     try {
-        const usuario = await fetch("http://localhost:8080/usuarios/consultar"+router.params.documento,
+        const documento = router.currentRoute.value.params.documento;
+        const respuesta = await fetch(`http://localhost:8080/usuarios/editar/${documento}`,
             {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(frm.value)
-
             })
-        if (!usuario.ok) {
-            throw new Error("Error al editar los datos");
-        }
-        data.value = await usuario.json();
-        this.frmdocumento=usuario.documento;
     } catch (error) {
         mensaje.value = error.mensaje;
     }
 }
+
 onMounted(() => {
-    Editar_Usuario();
+    Consultar_Usuario();
 })
 
 
@@ -88,50 +111,50 @@ onMounted(() => {
 
 <style scoped>
 .formulario-usuario {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-group-Usuario {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 12px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
 }
 
 button {
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 button:hover {
-  background-color: #4565a0;
+    background-color: #4565a0;
 }
 
 .mensaje-exito {
-  margin-top: 20px;
-  background-color: #d4edda;
-  color: #155724;
-  padding: 10px;
-  border-radius: 4px;
+    margin-top: 20px;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
 }
 </style>
