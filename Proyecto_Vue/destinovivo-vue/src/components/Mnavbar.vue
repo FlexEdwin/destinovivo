@@ -1,24 +1,4 @@
 <template>
-<<<<<<< HEAD:Proyecto_Vue/destinovivo-vue/src/components/Mnavbar.vue
-<nav>
-    <ul>
-        <li>
-            <router-link to ="/">Home</router-link>
-        </li>
-        <li>
-            <router-link to ="/Insertar_Empresa">Empresa</router-link>
-        </li>
-        <li>
-            <router-link to ="/Listar_Usuarios">Usuarios</router-link>
-        </li>
-        <li>
-            <router-link to ="/Insertar_Resena">Reseña</router-link>
-        </li>
-
-    </ul>
-</nav>
-
-=======
     <nav>
         <ul>
             <li>
@@ -28,11 +8,13 @@
                 <router-link to ="/Insertar_Empresa">Crear Empresa</router-link>
             </li>
             <li>
-                <router-link to ="/Insertar_Usuario">Usuarios</router-link>
+                <router-link to ="/Listar_Usuarios">Usuarios</router-link>
+            </li>
+            <li>
+                <router-link to ="/Insertar_Resena">Reseñas</router-link>
             </li>
         </ul>
     </nav>
->>>>>>> c10b453 (Diseño del Home):Proyecto_frontend/Proyecto_Vue/destinovivo-vue/src/components/Mnavbar.vue
 </template>
 
 <style scoped>
