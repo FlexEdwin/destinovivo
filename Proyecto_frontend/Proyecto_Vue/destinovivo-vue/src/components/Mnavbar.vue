@@ -13,6 +13,9 @@
         <li>
             <router-link to ="/Insertar_Resena">Reseña</router-link>
         </li>
+        <li>
+            <router-link to ="/Vista_Empresas">Empresas</router-link>
+        </li>
 
     </ul>
 </nav>

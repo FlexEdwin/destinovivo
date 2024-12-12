@@ -4,6 +4,16 @@
     <!-- Formulario de empresa -->
     <form @submit.prevent="Insertar_Empresa()">
       <div class="form-group">
+        <label for="id">Codigo de la Empresa:</label>
+        <input
+          type="text"
+          id="id"
+          v-model="frm.id"
+          placeholder="Ingresa el codigo de la empresa"
+          required
+        />
+      </div>
+      <div class="form-group">
         <label for="nombre">Nombre de la Empresa:</label>
         <input
           type="text"
@@ -106,6 +116,7 @@
   import { ref } from 'vue';
 
       const frm=ref(({
+        id:"",
         nombre:"",
         direccion:"",
         descripcion:"",

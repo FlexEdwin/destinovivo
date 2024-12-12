@@ -4,6 +4,8 @@ import { Comment } from "vue";
 import Formulario_Empresa from "@/view/Formulario_Empresa.vue";
 import Formulario_Usuario from "@/view/Formulario_Usuario.vue";
 import Formulario_Resena from "@/view/Formulario_Resena.vue";
+import Vista_Empresas from "@/view/Vista_Empresas.vue";
+
 
 
 const routes=[
@@ -31,7 +33,13 @@ const routes=[
         name: 'insertar_Resena',
         component: Formulario_Resena
 
+    },{
+        
+        path:'/vista_Empresa',
+        name:'vista_Empresa',
+        component: Vista_Empresas
     }
+        
 
 ]
 
