@@ -1,41 +1,51 @@
 <template>
-    <Mheader></Mheader>
-    <div class="formulario-usuario">
+    <div class="posidod">
+        <Mheader></Mheader>
+        <div class="formulario-usuario">
 
-        <!-- Formulario de empresa -->
-        <form @submit.prevent="Editar_Usuario()">
-            <div class="form-group-Usuario">
-                <label for="documento">Documento:</label>
-                <input type="text" id="documento" v-model="frm.documento" required />
+            <!-- Mostrar mensaje de éxito o error -->
+            <div v-if="mensaje"
+                :class="{ 'alert': true, 'alert-success': mensaje.type === 'success', 'alert-danger': mensaje.type === 'error' }">
+                {{ mensaje.text }}
             </div>
 
-            <div class="form-group-Usuario">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" v-model="frm.nombre" required />
-            </div>
+            <!-- Formulario de empresa -->
+            <form @submit.prevent="Editar_Usuario()">
+                <div class="form-group-Usuario">
+                    <label for="documento">Documento:</label>
+                    <input type="text" id="documento" v-model="frm.documento" required />
+                </div>
 
-            <div class="form-group-Usuario">
-                <label for="correo">Correo Electrónico:</label>
-                <input type="text" id="correo" v-model="frm.correo" required />
-            </div>
+                <div class="form-group-Usuario">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" v-model="frm.nombre" required />
+                </div>
 
-            <div class="form-group-Usuario">
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" v-model="frm.telefono" required />
-            </div>
+                <div class="form-group-Usuario">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="text" id="correo" v-model="frm.correo" required />
+                </div>
 
-            <div class="form-group-Usuario">
-                <label for="nacionalidad">Nacionalidad:</label>
-                <input type="nacional" id="nacionalidad" v-model="frm.nacionalidad" required />
-            </div>
+                <div class="form-group-Usuario">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" v-model="frm.telefono" required />
+                </div>
 
-            <div class="form-group-Usuario">
-                <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-                <input type="fechanaci" id="fechanaci" v-model="frm.fecha_nacimiento" required />
-            </div>
+                <div class="form-group-Usuario">
+                    <label for="nacionalidad">Nacionalidad:</label>
+                    <input type="nacional" id="nacionalidad" v-model="frm.nacionalidad" required />
+                </div>
 
-            <button type="submit" class="btn-submit">Enviar</button>
-        </form>
+                <div class="form-group-Usuario">
+                    <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                    <input type="fechanaci" id="fechanaci" v-model="frm.fecha_nacimiento" required />
+                </div>
+
+                <button class="btn btn-success">Enviar</button>
+            </form>
+            <br>
+            <button class="btn btn-info" @click="Regresar1(documento)">Regresar</button>
+        </div>
     </div>
 </template>
 
@@ -96,11 +106,44 @@ const Editar_Usuario = async () => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(frm.value)
-            })
+            });
+        if (respuesta.ok) {
+            // Si la respuesta es exitosa, muestra un mensaje de éxito
+            mensaje.value = {
+                text: "Usuario editado correctamente",
+                type: "success"
+            };
+            // Limpiar los campos del formulario
+            resetForm();
+        } else {
+            // Si hay un error en el servidor (por ejemplo, 400 o 500)
+            const errorData = await respuesta.json();
+            mensaje.value = {
+                text: `Error: ${errorData.message || "No se pudo insertar el usuario"}`,
+                type: "error"
+            };
+        }
+
     } catch (error) {
         mensaje.value = error.mensaje;
     }
 }
+// Función para restablecer los campos del formulario
+const resetForm = () => {
+    frm.value = {
+        documento: "",
+        nombre: "",
+        correo: "",
+        telefono: "",
+        nacionalidad: "",
+        fecha_nacimiento: ""
+    };
+};
+
+const Regresar1 = async (documento) => {
+    router.push({ name: 'Listar_Usuarios' });
+};
+
 
 onMounted(() => {
     Consultar_Usuario();
@@ -137,14 +180,7 @@ input {
     font-size: 12px;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+
 
 button:hover {
     background-color: #4565a0;

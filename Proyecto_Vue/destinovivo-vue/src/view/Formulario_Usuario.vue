@@ -1,7 +1,9 @@
 <template>
-        <Mheader></Mheader>
- <div>
-        <Listar_Usuarios></Listar_Usuarios>  
+  <div class="posidod">
+    <Mheader></Mheader>
+    <div>
+      <Listar_Usuarios></Listar_Usuarios>
+    </div>
   </div>
 </template>
 
@@ -12,15 +14,16 @@ import Mheader from '@/components/Mheader.vue';
 
 
 <style scoped>
-    .formulario-view {
-    text-align: center;
-    font-style: normal;
-    padding: 20px;
-    }
-    .formulario-title {
-    text-align: left;
-    font-size: large;
-    font-style: normal;
-    padding: 20px;
-    }
+.formulario-view {
+  text-align: center;
+  font-style: normal;
+  padding: 20px;
+}
+
+.formulario-title {
+  text-align: left;
+  font-size: large;
+  font-style: normal;
+  padding: 20px;
+}
 </style>

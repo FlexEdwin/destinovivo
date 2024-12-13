@@ -5,36 +5,47 @@
             <router-link to ="/">Home</router-link>
         </li>
         <li>
-            <router-link to ="/Insertar_Empresa">Empresa</router-link>
+            <router-link to ="/Insertar_Empresa"> Crear Empresa</router-link>
         </li>
         <li>
             <router-link to ="/Listar_Usuarios">Usuarios</router-link>
         </li>
-        <li>
-            <router-link to ="/Insertar_Resena">Reseña</router-link>
-        </li>
-
     </ul>
 </nav>
 
 </template>
 
 <style scoped>
-    nav ul {
+
+  nav {
     display: flex;
-    gap: 10px;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+
+  nav ul {
+    display: flex;
+    gap: 20px;  
     list-style: none;
     padding: 0;
-    }
+    margin: 0;
+  }
 
-    nav ul li a {
+ 
+  nav ul li a {
     text-decoration: none;
-    color: rgb(253, 253, 255);
-    }
+    color: white;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
 
-    nav ul li a:hover {
-    text-decoration: underline;
-    background-color: rgb(4, 196, 255);
-    }
+  
+  nav ul li a:hover {
+    background-color: #4caf50;
+    text-decoration: none;
+  }
 
 </style>

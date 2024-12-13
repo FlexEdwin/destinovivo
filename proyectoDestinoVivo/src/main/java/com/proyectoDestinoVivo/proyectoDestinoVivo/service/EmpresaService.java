@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmpresaService {
@@ -45,5 +46,15 @@ public class EmpresaService {
 
     public List<Empresa> consultarEmpresas(){
         return empresaRepository.findAll();
+    }
+
+
+    public Empresa consultarEmpresaById(int id_empresa){
+        Optional<Empresa> empresa = empresaRepository.findById(id_empresa);
+        if (empresa.isPresent()) {
+            return empresa.get();
+        } else {
+            throw new RuntimeException("Empresa no encontrado con ID: " + id_empresa);
+        }
     }
 }

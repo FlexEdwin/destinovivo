@@ -1,4 +1,5 @@
 <template>
+ <div class="posidod">
     <div class="formulario-resena">
       
        
@@ -29,6 +30,7 @@
          <p>Formulario enviado con éxito!</p>
        </div>
      </div>
+    </div>
    </template>
    
    

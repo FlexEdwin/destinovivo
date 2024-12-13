@@ -1,31 +1,36 @@
 <template>
-  <Mheader></Mheader>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Documento</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Telefono</th>
-        <th scope="col">Nacionalidad</th>
-        <th scope="col">Fecha de nacimiento</th>
-        <th scope="col">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(item, index) in data" :key="index">
-        <td>{{ item.documento }}</td>
-        <td>{{ item.nombre }}</td>
-        <td>{{ item.correo }}</td>
-        <td>{{ item.telefono }}</td>
-        <td>{{ item.nacionalidad }}</td>
-        <td>{{ item.fecha_nacimiento }}</td>
-        <td><button @click="Editar_Usuario(item.documento)">Editar</button> <button  @click="modalDel=false;Eliminar_Usuario(item.documento)">Eliminar</button></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="posidod">
+    <Mheader></Mheader>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Documento</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Nacionalidad</th>
+          <th scope="col">Fecha de nacimiento</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in data" :key="index">
+          <td>{{ item.documento }}</td>
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.correo }}</td>
+          <td>{{ item.telefono }}</td>
+          <td>{{ item.nacionalidad }}</td>
+          <td>{{ item.fecha_nacimiento }}</td>
+          <td><button class="btn btn-primary" @click="Editar_Usuario(item.documento)">Editar</button></td>
+          <td><button class="btn btn-danger" @click="modalDel = false; Eliminar_Usuario(item.documento)">Eliminar</button>
+          </td>
 
-  <div><router-link to="/Insertar_Usuario">Nuevo usuario</router-link></div>
+        </tr>
+      </tbody>
+    </table>
+
+    <div><button class="btn btn-primary" @click="Nuevo_Usuario()">Nuevo Usuario</button></div>
+  </div>
 </template>
 
 <script setup>
@@ -83,6 +88,11 @@ const Eliminar_Usuario = async (documento) => {
   } catch (error) {
     mensaje.value = error.mensaje;
   }
+};
+
+// Función para agregar nuevo usuario
+const Nuevo_Usuario = async (documento) => {
+  router.push({ name: 'Insertar_Usuario' });
 };
 
 </script>

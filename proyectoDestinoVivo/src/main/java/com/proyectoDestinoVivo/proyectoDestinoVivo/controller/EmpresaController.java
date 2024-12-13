@@ -1,6 +1,7 @@
 package com.proyectoDestinoVivo.proyectoDestinoVivo.controller;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Empresa;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.service.EmpresaService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,4 +45,15 @@ public class EmpresaController {
     public String eliminarEmpresa(@PathVariable int id_empresa, @RequestBody Empresa empresa){
         return empresaService.eliminarEmpresa(id_empresa);
     }
+    @GetMapping("/empresas/consultar/{id_empresa}")
+    public ResponseEntity<Empresa> consultarEmpresaById(@PathVariable("id_empresa") int id_empresa){
+        try{
+            Empresa empresa = empresaService.consultarEmpresaById(id_empresa);
+            return new ResponseEntity<>(empresa, HttpStatus.OK);
+        }catch (RuntimeException e){
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+
+    }
+
 }
