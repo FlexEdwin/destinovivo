@@ -1,5 +1,6 @@
 package com.proyectoDestinoVivo.proyectoDestinoVivo.controller;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Empresa;
+import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Usuario;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.service.EmpresaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,8 @@ public class EmpresaController {
             throw new RuntimeException("Error al consultar las empresas" +e);
         }
     }
+
+
 
     @PutMapping("/empresas/editar/{id_empresa}")
     public ResponseEntity<Empresa> editarEmpresa(@PathVariable int id_empresa, @RequestBody Empresa empresa){

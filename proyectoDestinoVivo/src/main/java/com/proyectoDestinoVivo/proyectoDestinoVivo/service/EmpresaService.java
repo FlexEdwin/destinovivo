@@ -1,6 +1,7 @@
 package com.proyectoDestinoVivo.proyectoDestinoVivo.service;
 
 import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Empresa;
+import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Usuario;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.repository.EmpresaRepository;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,7 @@ public class EmpresaService {
     public List<Empresa> consultarEmpresas(){
         return empresaRepository.findAll();
     }
+
 
 
     public Empresa consultarEmpresaById(int id_empresa){

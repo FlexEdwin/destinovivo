@@ -1,15 +1,15 @@
 <template>
  <div class="posidod">
     <div class="formulario-resena">
-      
-       
+
+
        <!-- Formulario de empresa -->
        <form>
          <div class="form-group-resena">
            <label for="resena">Insertar Reseña</label>
            <textarea id="resumen" name="resumen" rows="5" cols="40" placeholder="Escriba su reseña aquí..."></textarea>
          </div>
-   
+
          <div class="form-group-resena">
            <label for="calif">Calificación:</label>
            <select id="opciones" name="opciones">
@@ -21,10 +21,10 @@
                 <option value="opcion4">5</option>
             </select>
          </div>
-     
+
          <button type="submit" class="btn-submit">Enviar</button>
        </form>
-   
+
        <!-- Mensaje de éxito después del envío -->
        <div class="mensaje-exito">
          <p>Formulario enviado con éxito!</p>
@@ -97,18 +97,11 @@
     border: 1px solid #ccc;
   }
 
-  button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+.success {
+  color: green;
+}
 
-  button:hover {
-    background-color: #45a049;
-  }
-   
-   </style>
-   
+.error {
+  color: red;
+}
+</style>

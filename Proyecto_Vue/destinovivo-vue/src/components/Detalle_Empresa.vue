@@ -43,7 +43,7 @@
     
           <div class="form-group">
             <label for="imagen">Imagen:</label>
-            <img :src="frm.imagen" >          
+            <img :src="frm.imagen" >
         </div>
     </form>
 </div>

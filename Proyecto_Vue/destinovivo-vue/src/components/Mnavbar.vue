@@ -26,13 +26,13 @@
 
   nav ul {
     display: flex;
-    gap: 20px;  
+    gap: 20px;
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
- 
+
   nav ul li a {
     text-decoration: none;
     color: white;
@@ -42,7 +42,7 @@
     border-radius: 10px;
   }
 
-  
+
   nav ul li a:hover {
     background-color: #4caf50;
     text-decoration: none;
