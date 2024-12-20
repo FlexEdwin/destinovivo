@@ -1,25 +1,24 @@
 package com.proyectoDestinoVivo.proyectoDestinoVivo.controller;
+
 import com.proyectoDestinoVivo.proyectoDestinoVivo.model.Usuario;
 import com.proyectoDestinoVivo.proyectoDestinoVivo.service.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class UsuarioController {
-    @Autowired
     private final UsuarioService usuarioService;
 
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
-    @PostMapping("usuarios//insertar")
+    @PostMapping("usuarios/insertar")
     public Usuario insertar(@RequestBody Usuario usuario){
         try {
             return usuarioService.insertarUsuario(usuario);
@@ -28,7 +27,7 @@ public class UsuarioController {
         }
 
     }
-    @GetMapping("usuarios//consultar")
+    @GetMapping("usuarios/consultar")
     public List<Usuario> consultar(){
         try{
             return usuarioService.consultarUsuario();
@@ -37,15 +36,27 @@ public class UsuarioController {
         }
     }
 
+    @GetMapping("/usuarios/consultar/{documento}")
+    public ResponseEntity<Usuario> consultarUsuarioById(@PathVariable("documento") String documento){
+        try{
+            Usuario usuario = usuarioService.consultarUsuarioById(documento);
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
+        }catch (RuntimeException e){
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+
+    }
+
     @PutMapping("/usuarios/editar/{documento}")
-    public ResponseEntity<Usuario> editarUsuario(@PathVariable int documento, @RequestBody Usuario usuario){
-        Usuario actualizada = usuarioService.editarUsuario(documento, usuario);
-        return ResponseEntity.ok(actualizada);
+    public ResponseEntity<Usuario> editarUsuario(@PathVariable String documento, @RequestBody Usuario usuario){
+        Usuario actualizado = usuarioService.editarUsuario(documento, usuario);
+        return ResponseEntity.ok(actualizado);
 
     }
 
     @DeleteMapping("/usuarios/eliminar/{documento}")
-    public String eliminarUsuario(@PathVariable int documento, @RequestBody Usuario usuario){
+    public String eliminarUsuario(@PathVariable String documento){
         return usuarioService.eliminarUsuario(documento);
     }
+
 }
